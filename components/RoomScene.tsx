@@ -1,6 +1,7 @@
 'use client';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Environment, Float, RoundedBox } from '@react-three/drei';
+import { Environment } from '@react-three/drei/core/Environment';
+import { RoundedBox } from '@react-three/drei/core/RoundedBox';
 import { useRef } from 'react';
 import * as THREE from 'three';
 function Interior() {

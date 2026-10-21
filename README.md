@@ -69,3 +69,9 @@ Free services sleep after 15 minutes without inbound traffic and take about a mi
 The header language switcher supports English (default) and European Portuguese (`pt-PT`). The selection is stored in a first-party `locale` cookie for one year and survives navigation and reloads. Switching reloads the current page with the selected language rendered on the server, including the document language and metadata. Routes remain the same in both languages.
 
 Portuguese translations live in `lib/locales/pt.json`, keyed by the original English copy. Add a Portuguese entry whenever English copy changes. Service content, FAQs, accessibility labels, contact form labels and responses, and legal placeholders are translated. UK service areas and GBP budgets are retained. Legal text remains marked as pending approval in both languages.
+
+### Build memory on Render
+
+The build script gives the Next.js build a 4096 MB JavaScript heap, scoped to the build command. `next.config.ts` enables Webpack memory optimizations, limits worker concurrency, and scopes file tracing to this project. The 3D scene imports only the Drei modules it uses. The production start command retains its normal heap settings for the Free service.
+
+If you previously set a small `NODE_OPTIONS` heap limit in Render, remove it from the service's Environment settings. You can override the build-only limit with `RENDER_BUILD_HEAP_MB`; do not set a 4 GB runtime heap on the Free service. After pushing these changes, use **Manual Deploy → Clear build cache & deploy**. Confirm the build command is `bash scripts/render-build.sh`.

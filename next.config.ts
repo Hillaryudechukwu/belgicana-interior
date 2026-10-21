@@ -1,3 +1,12 @@
 import type { NextConfig } from 'next';
-const nextConfig: NextConfig = { reactStrictMode: true };
+const nextConfig: NextConfig = {
+  reactStrictMode: true,
+  outputFileTracingRoot: process.cwd(),
+  experimental: {
+    webpackMemoryOptimizations: true,
+    webpackBuildWorker: true,
+    cpus: 1,
+    staticGenerationMaxConcurrency: 1,
+  },
+};
 export default nextConfig;
