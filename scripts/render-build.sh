@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
+printf '[render-build] Installing dependencies and building; this command does not start the web server.\n'
 npm ci --include=dev
 # Render's build machine has a separate memory allowance from the Free runtime.
 # Scope the larger heap to compilation; do not apply it to the 512 MB web service.
