@@ -2,11 +2,8 @@
 # Generate Render's Blueprint setup link for a pushed repository.
 set -euo pipefail
 cd "$(dirname "$0")/.."
-repo="${1:-}"
-if [[ -z "$repo" ]]; then
-  printf 'Usage: bash scripts/deploy-render.sh https://github.com/OWNER/REPO\n' >&2
-  exit 1
-fi
+repo="${1:-https://github.com/Hillaryudechukwu/belgicana-interior}"
+repo="${repo%.git}"
 case "$repo" in
   https://github.com/*/*|https://gitlab.com/*/*|https://bitbucket.org/*/*) ;;
   *) printf 'Provide an HTTPS GitHub, GitLab, or Bitbucket repository URL.\n' >&2; exit 1 ;;

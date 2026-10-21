@@ -50,8 +50,9 @@ Next.js / TypeScript / Tailwind CSS 4 / custom editorial CSS / Three.js / React 
 1. Push this project (including `render.yaml` and `scripts/`) to a GitHub, GitLab, or Bitbucket repository. Keep `.env` and credentials out of Git; `.gitignore` excludes them.
 2. Generate your deployment link:
    ```bash
-   bash scripts/deploy-render.sh https://github.com/OWNER/REPO
+   bash scripts/deploy-render.sh
    ```
+   The script defaults to `https://github.com/Hillaryudechukwu/belgicana-interior`. Pass another repository URL as the first argument to override it.
 3. Open the printed link, sign into Render, grant repository access if needed, and deploy the Blueprint. It creates one **Free Node web service**. The script generates the setup link; the dashboard creates and deploys the service.
 4. After deployment, use the service's `https://…onrender.com` address. Future deployments can be triggered with **Manual Deploy → Deploy latest commit**. Automatic deploys are disabled in this Blueprint.
 
