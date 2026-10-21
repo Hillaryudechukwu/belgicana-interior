@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+.DS_Store
+
+# Source questionnaire; not part of the deployed application.
+/Belgicana_Interior_Completed_Website_Information_Form.docx
