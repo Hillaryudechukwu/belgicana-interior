@@ -44,3 +44,21 @@ The privacy, cookies and terms pages are **draft placeholders**; they must be ap
 
 ## Stack
 Next.js / TypeScript / Tailwind CSS 4 / custom editorial CSS / Three.js / React Three Fiber / Drei / Motion for React / Lucide / Nodemailer.
+
+## Deploy to Render Free
+
+1. Push this project (including `render.yaml` and `scripts/`) to a GitHub, GitLab, or Bitbucket repository. Keep `.env` and credentials out of Git; `.gitignore` excludes them.
+2. Generate your deployment link:
+   ```bash
+   bash scripts/deploy-render.sh https://github.com/OWNER/REPO
+   ```
+3. Open the printed link, sign into Render, grant repository access if needed, and deploy the Blueprint. It creates one **Free Node web service**. The script generates the setup link; the dashboard creates and deploys the service.
+4. After deployment, use the service's `https://…onrender.com` address. Future deployments can be triggered with **Manual Deploy → Deploy latest commit**. Automatic deploys are disabled in this Blueprint.
+
+Render runs `scripts/render-build.sh` (`npm ci --include=dev` then `npm run build`) and `scripts/render-start.sh` (binds Next.js to `0.0.0.0` and Render's `PORT`). Node 22 is selected explicitly. This is a web service because `/api/enquiry` needs a running Node server.
+
+### Contact form on the free tier
+
+Set `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `ENQUIRY_TO`, and `ENQUIRY_FROM` in the service's **Environment** settings, then redeploy. Render Free blocks outbound SMTP ports **25, 465, and 587**. Use a mail provider that supports STARTTLS on another port such as **2525**, and set `SMTP_PORT=2525`; otherwise email delivery needs an HTTPS mail API integration or a paid service with supported SMTP access. Without mail configuration, the form returns 503 and submissions are not saved.
+
+Free services sleep after 15 minutes without inbound traffic and take about a minute to wake. See [Render free service limits](https://render.com/docs/free) and [Blueprint deployment](https://render.com/docs/deploy-to-render).

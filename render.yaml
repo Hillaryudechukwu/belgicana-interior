@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: belgicana-interior
+    runtime: node
+    plan: free
+    buildCommand: bash scripts/render-build.sh
+    startCommand: bash scripts/render-start.sh
+    healthCheckPath: /
+    autoDeployTrigger: off
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
