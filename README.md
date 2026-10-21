@@ -63,3 +63,9 @@ Render runs `scripts/render-build.sh` (`npm ci --include=dev` then `npm run buil
 Set `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `ENQUIRY_TO`, and `ENQUIRY_FROM` in the service's **Environment** settings, then redeploy. Render Free blocks outbound SMTP ports **25, 465, and 587**. Use a mail provider that supports STARTTLS on another port such as **2525**, and set `SMTP_PORT=2525`; otherwise email delivery needs an HTTPS mail API integration or a paid service with supported SMTP access. Without mail configuration, the form returns 503 and submissions are not saved.
 
 Free services sleep after 15 minutes without inbound traffic and take about a minute to wake. See [Render free service limits](https://render.com/docs/free) and [Blueprint deployment](https://render.com/docs/deploy-to-render).
+
+## Languages
+
+The header language switcher supports English (default) and European Portuguese (`pt-PT`). The selection is stored in a first-party `locale` cookie for one year and survives navigation and reloads. Switching reloads the current page with the selected language rendered on the server, including the document language and metadata. Routes remain the same in both languages.
+
+Portuguese translations live in `lib/locales/pt.json`, keyed by the original English copy. Add a Portuguese entry whenever English copy changes. Service content, FAQs, accessibility labels, contact form labels and responses, and legal placeholders are translated. UK service areas and GBP budgets are retained. Legal text remains marked as pending approval in both languages.
